@@ -26,7 +26,7 @@ inputElem.addEventListener('input', debounce(handlerCountrySearch, DEBOUNCE_DELA
     e.preventDefault();
 
     //------------------------------у місці введення беремо дані------------------------------//
-    const searchedCountry = inputElem.value.trim();
+    const searchedCountry = e.target.value.trim();
 
     countryListElem.innerHTML = '';
 	 countryListElem.style.listStyle = 'none';
