@@ -7,9 +7,9 @@ import Notiflix from 'notiflix';
 //елементи та змінні
 const DEBOUNCE_DELAY = 300;
 
-const inputElem = document.querySelector('#search-box');
-const countryListElem = document.querySelector('.country-list');
-const countryInfoElem = document.querySelector('.country-info');
+const input = document.querySelector('#search-box');
+const countryList = document.querySelector('.country-list');
+const countryInfo = document.querySelector('.country-info');
 
 const body = document.querySelector('body');
 body.style.display = 'flex';
@@ -20,7 +20,7 @@ body.style.textAlign = 'center';
 
 //слухач на input
 
-inputElem.addEventListener('input', debounce(handlerCountrySearch, DEBOUNCE_DELAY, { trailing: true }));
+input.addEventListener('input', debounce(handlerCountrySearch, DEBOUNCE_DELAY, { trailing: true }));
 
   //функція на введення із debounce
   function handlerCountrySearch(e) {
@@ -31,14 +31,14 @@ inputElem.addEventListener('input', debounce(handlerCountrySearch, DEBOUNCE_DELA
 
     //у місці введення беремо дані
     const searchedCountry = e.target.value.trim();
-    countryListElem.innerHTML = '';
-    countryInfoElem.innerHTML = '';
-	 countryListElem.style.listStyle = 'none';
-	 countryInfoElem.style.listStyle = 'none';
+    countryList.innerHTML = '';
+    countryInfo.innerHTML = '';
+	 countryList.style.listStyle = 'none';
+	 countryInfo.style.listStyle = 'none';
     //якщо порожня стрічка виходимо
     if (!searchedCountry) {
-      countryListElem.innerHTML = '';
-      countryInfoElem.innerHTML = '';
+      countryList.innerHTML = '';
+      countryInfo.innerHTML = '';
       return
     }
 
@@ -52,8 +52,8 @@ inputElem.addEventListener('input', debounce(handlerCountrySearch, DEBOUNCE_DELA
       foundCountries(result);
     })
       .catch(error => {
-        countryListElem.innerHTML = '';
-        countryInfoElem.innerHTML = '';
+        countryList.innerHTML = '';
+        countryInfo.innerHTML = '';
         Notiflix.Notify.failure('Oops, there is no country with that name');
       })
   };
@@ -73,7 +73,7 @@ function foundCountries(result) {
       </li>`;
     })
     .join('');
-    countryListElem.innerHTML = mark;
+    countryList.innerHTML = mark;
 
   //якщо знайдено 1 результат, ми виводимо розширену розмітку
         } else if (inputData === 1) {
@@ -89,7 +89,7 @@ function foundCountries(result) {
       </li>`;
     })
     .join('');
-    countryListElem.innerHTML = mark;
+    countryList.innerHTML = mark;
         }
 
 };
