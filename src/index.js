@@ -90,6 +90,5 @@ function foundCountries(result) {
     .join('');
     countryListElem.innerHTML = mark;
         }
-
 };
 
