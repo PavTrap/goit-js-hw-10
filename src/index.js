@@ -11,6 +11,13 @@ const inputElem = document.querySelector('#search-box');
 const countryListElem = document.querySelector('.country-list');
 const countryInfoElem = document.querySelector('.country-info');
 
+const body = document.querySelector('body');
+body.style.display = 'flex';
+body.style.flexDirection = 'column';
+body.style.alignItems = 'center';
+body.style.textAlign = 'center';
+
+
 //слухач на input
 
 inputElem.addEventListener('input', debounce(handlerCountrySearch, DEBOUNCE_DELAY, { trailing: true }));
@@ -86,9 +93,3 @@ function foundCountries(result) {
         }
 
 };
-
-const body = document.querySelector('body');
-body.style.display = 'flex';
-body.style.flexDirection = 'column';
-body.style.alignItems = 'center';
-body.style.textAlign = 'center';
